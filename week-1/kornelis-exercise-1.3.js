@@ -4,7 +4,7 @@
 ; Author: Izabella Kornelis
 ; Date: 19 February 2020
 ; Modified By: Izabella Kornelis
-; Description: A simple JavaScript program showing constructors with prototypes.
+; Description: A simple JavaScript program using a function to create a cell phone object.
 ;===========================================
 */
 
