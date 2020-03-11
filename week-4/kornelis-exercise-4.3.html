@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+  <title>Exercise 4.3</title>
+  <meta charset = "UTF-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+  <body>
+    <h4>HTTP DELETE Request</h4>
+
+    <button id="delete1">Delete User Information</button>
+
+    <script>
+
+      $(function() {
+
+        $("#delete1").click(function() {
+          $.ajax({
+            url: "http://httpbin.org/delete",
+            dataType: "json",
+            type: "DELETE",
+            data: { firstName: "Izabella", lastName: "Kornelis", age: "20" },
+            success: function(data, status) {
+              console.log( "First Name: "+ data.form.firstName + " Last Name: " + data.form.lastName + " Age: " + data.form.age + "\nStatus: " + status)
+            }
+          });
+        });
+      });
+
+    </script>
+  </body>
+</html>

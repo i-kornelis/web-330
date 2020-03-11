@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+  <!-- basic.html -->
+  <title>Async example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    jQuery.ajaxSetup({
+        async:false
+    });
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            $("#hide").hide();
+            $("#view").text("<p>Hello there!</p>");
+        });
+    });
+</script>
+</head>
+<body>
+    <div id = "hide">
+        <p>This is the text I would like to hide!</p>
+    </div>
+    <button id="btn">Hide Text/ Load New Text</button>
+    <div id = "view"></div>
+</body>
+</html>
