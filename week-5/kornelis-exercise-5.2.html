@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+
+    <!-- jquery Reference Library -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .btn :hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Exercise 5.2</h2>
+    <button id="btn">Run Test</button>
+    </br><span id="show-name"></span>
+
+    <script>
+      $(function() {
+        var name = {
+          first: "Izabella",
+          last: "Kornelis",
+          display: function(){
+            $("#show-name").html("");
+            $("#show-name").append(
+              "<p><b>First Name:</b> " + this.first + "</p>" + "<p><b>Last Name:</b> " + this.last + "</p>"
+            );
+          }
+        };
+
+        $("#btn").click($.proxy(name,"display"));
+
+      });
+    </script>
+  </body>
+</html>
