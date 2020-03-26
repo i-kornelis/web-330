@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 6.2 - ViewModel Function Objects</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">    
+    <!-- Knockout.js -->
+    <script src="../knockout-3.5.1.js"></script>
+
+  </head>
+  <body>
+     <nav>
+      <ul class="nav nav-tabs">
+        <li class="nav-item ">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div role="main" class="container">
+      <br /><br />
+
+      <h2>Person View Model</h2>
+        <form>
+            <div class="form-group">
+                <label for="txtFirstName">First Name:</label>
+                <input type="text" class="form-control alert-warning" data-bind="value: firstName" id="txtFirstName">
+            </div>
+            <div class="form-group">
+                <label for="txtLastName">Last Name:</label>
+                <input type="text" class="form-control alert-warning" data-bind="value: lastName" id="txtLastName">
+            </div>
+            <div class="form-group">
+                <label for="txtEmail">Email:</label>
+                <input type="text" class="form-control alert-warning" data-bind="value: email" id="txtEmail">
+            </div>
+        </form>
+
+        </div>
+
+    <script>
+      function PersonViewModel() {
+        this.firstName = ko.observable("Bob");
+        this.lastName = ko.observable("Smith");
+        this.email = ko.observable("bsmith@domain.com");
+      }
+
+      ko.applyBindings(new PersonViewModel());
+    </script>
+
+
+  </body>
+</html>
