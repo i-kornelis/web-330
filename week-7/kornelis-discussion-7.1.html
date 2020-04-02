@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Discussion 6.1</title>
+    <!-- Knockout.js -->
+    <script src="../knockout-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+<h2>Name</h2>
+<div data-bind="show: name">
+  <p data-bind="text: name"></p>
+</div>
+  <input data-bind="value: name" />
+
+<h2>Age</h2>
+<div data-bind="show: age">
+  <p data-bind="text: age"></p>
+</div>
+  <input data-bind="value: age" />
+
+<script>
+ko.bindingHandlers.show= {
+    update: function(element, valueAccessor) {
+        ko.utils.unwrapObservable(valueAccessor())
+        $(element).hide().fadeIn(400);
+    }
+}
+var viewModel = {
+    name: ko.observable("Insert Name"),
+    age: ko.observable(" Insert Age")
+};
+
+ko.applyBindings(viewModel);
+</script>
+
+</body>
+</html>
