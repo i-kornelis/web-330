@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 7.3</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- JQuery-->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Knockout.js -->
+    <script src="../knockout-3.5.1.js"></script>
+
+  </head>
+  <body>
+    <nav>
+      <ul class="nav nav-tabs">
+        <li class="nav-item ">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+  </br>
+
+<div id="main" class="container">
+<h2>Example 7.3</h2>
+<br>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody data-bind="foreach: textbook">
+   <tr>
+      <td data-bind="text: title"></td>
+      <td data-bind="text: price"></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+  <script>
+    function TextbookViewModel() {
+      this.textbook = ko.observableArray([
+        {title: "Learning JavaScript Design Patterns", price: "$44.99" },
+        {title: "Express in Action", price: "$39.99" },
+        {title: "JavaScript: Definitive Guide", price: "$26.00" },
+        {title: "RESTful Web APIs", price: "$19.80" }
+      ]);
+    }
+
+    ko.applyBindings(new TextbookViewModel());
+  </script>
+
+</body>
+</html>
