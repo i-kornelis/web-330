@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 7.2</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- JQuery-->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Knockout.js -->
+    <script src="../knockout-3.5.1.js"></script>
+    <style>
+      button a {
+        color: white;
+      }
+      button a:hover {
+        color: white;
+        text-decoration: none;
+      }
+      button a:visited {
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+
+  </head>
+  <body>
+    <nav>
+      <ul class="nav nav-tabs">
+        <li class="nav-item ">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+  </br>
+
+    <div id="main" class="container">
+      <br>
+      <h2>JavaScript Tutorials</h2>
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: tutorial">
+         <tr>
+            <td data-bind="text: title"></td>
+            <td data-bind="text: description"></td>
+            <td><button type="button" class="btn btn-primary btn-sm"><a data-bind="attr: { href: url}" target="_blank">View Tutorial</a></button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <script type="text/javascript">
+      function TutorialViewModel() {
+        this.tutorial = ko.observableArray([
+          {
+            title: "JavaScript Object Methods",
+            description: "A JavaScript method is a property containing a function definition.",
+            url: ko.observable("https://www.w3schools.com/js/js_object_methods.asp")
+          },
+          {
+            title: "JavaScript Properties",
+            description: "Properties are the values associated with a JavaScript object.",
+            url: ko.observable("https://www.w3schools.com/js/js_object_properties.asp")
+          },
+          {
+            title: "JavaScript Object Constructors",
+            description: "Object Constructors are like blueprint for creating objects of the same type.",
+            url: ko.observable("https://www.w3schools.com/js/js_object_constructors.asp")
+          },
+          {
+            title: "JavaScript Output",
+            description: "How to Output your JavaScript Data",
+            url: ko.observable("https://www.w3schools.com/js/js_output.asp")
+          },
+          {
+            title: "JavaScript Arrays",
+            description: "JavaScript arrays are used to store multiple values in a single variable.",
+            url: ko.observable("https://www.w3schools.com/js/js_arrays.asp")
+          }
+        ]);
+      }
+
+      ko.applyBindings(new TutorialViewModel());
+
+    </script>
+
+
+</body>
+</html>
