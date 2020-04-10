@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Exercise 8.2</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Knockout.js -->
+    <script src="../knockout-3.5.1.js"></script>
+  </head>
+  <body>
+    <nav>
+      <ul class="nav nav-tabs">
+        <li class="nav-item ">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+  </br>
+
+  <div id="main" class="container">
+    <h2>Example 8.2</h2>
+    <br>
+
+    <div class="row" data-bind="if: error">
+      <div class="col-sm-12">
+        <div class="alert alert-danger" role="alert">
+          <strong>Warning!</strong> <span data-bind="text: error()"></span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="col-sm-6" style="background-color: #333; border-color: #333; border-radius: 4px; color: white;">
+        <div class="card">
+          <div class ="card-block p-3">
+           <h3 class="card-tile">Employees</h3>
+            <div class="card-text">
+              <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                <label for="txtEmployee" class="col-form-label" style="width: 25%">Employee Name:</label>
+                <div style="width: 50%">
+                  <input
+                    type="text"
+                    data-bind="value: nameToAdd, valueUpdate: 'afterkeydown'"
+                    class="form-control"
+                    id="txtEmployee"
+                  />
+                </div>
+                  <div style="width: 20%">
+                    <a href="#" data-bind="click: add" class="btn btn-primary">Add</a>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="txtEmployees">Employees: </label>
+                <select
+                  size="10"
+                  class="form-control"
+                  data-bind="options: employeeList"
+                  id="txtEmployees"
+                ></select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function EmployeeViewModel() {
+      this.nameToAdd = ko.observable("");
+      this.employeeList = ko.observableArray(["John Smith", "Jane Doe"]);
+      this.error = ko.observable("");
+
+      this.add = function() {
+        if (
+          this.nameToAdd() !== "" &&
+          this.employeeList.indexOf(this.nameToAdd()) < 0
+        ) {
+          this.error("");
+          this.employeeList.push(this.nameToAdd());
+        } else {
+          this.error("Duplicate or Invalid Entry.");
+        }
+
+        this.nameToAdd("");
+      };
+    }
+
+    ko.applyBindings(new EmployeeViewModel());
+  </script>
+
+  </body>
+</html>
